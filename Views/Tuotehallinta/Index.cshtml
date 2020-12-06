@@ -1,0 +1,52 @@
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Tuotteen tunnus</th>
+      <th scope="col">Tuotteen väri</th> 
+      <th scope="col">Tuotteen koko</th>
+      <th scope="col">Tuotteen hinta</th> 
+      <th scope="col">Tuotteen saldo</th> 
+      <th scope="col">Tuotekuva</th> 
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (TuoteTieto tuote in Model) {
+    <tr>
+      <td>@tuote.Id</td>
+      <td>@tuote.Vari</td>
+      <td>@tuote.Koko</td>         
+      <td>@tuote.Hinta €</td>
+      <td>@tuote.Saldo</td>
+
+      @if (tuote.Vari == "sininen") {
+      <td><img src="https://localhost:5001/kuvat/sininen.jpg" alt="Sininen paita" width="30%"/></td>      
+
+      } else if (tuote.Vari == "punainen") {
+        <td><img src="https://localhost:5001/kuvat/punainen.jpg" alt="Punainen paita" width="30%"/></td>  
+      } else if (tuote.Vari == "musta") {
+        <td><img src="https://localhost:5001/kuvat/musta.jpg" alt="Musta paita" width="30%"/></td>
+      } else if (tuote.Vari == "harmaa") {
+        <td><img src="https://localhost:5001/kuvat/harmaa.jpg" alt="Harmaa paita" width="30%"/></td>
+      } else if (tuote.Vari == "valkoinen") {
+        <td><img src="https://localhost:5001/kuvat/valkoinen.jpg" alt="Harmaa paita" width="30%"/></td>
+      }
+    </tr>
+     }
+  </tbody>
+  
+</table>
+
+<form method="post" action="/tuotehallinta/uusi">
+
+  <h4>Lisää uusi tuote</h4>
+
+Tuotteen väri: <input class="form-control mb-3" type="text" name="uusiVari"/>
+Tuotteen koko: <input class="form-control mb-3" type="text" name="uusiKoko"/>
+Tuotteen hinta: <input class="form-control mb-3" type="text" name="uusiHinta"/>
+Tuotteen saldo: <input class="form-control mb-3" type="text" name="uusiSaldo"/>
+
+<input class="btn btn-primary" type="submit" name="uusi" value="Lisää"/>
+
+</form>
